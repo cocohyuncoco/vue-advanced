@@ -1,26 +1,28 @@
 <template>
     <div>
-        Jobs
+        <div v-for="(job, i) in jobs" v-bind:key="i">{{ job.title }}</div>
     </div>
 </template>
 
 <script>
+import { fetchJobsList } from '../api/index.js';
+
 export default {
-    name: 'VueAdvancedJobsView',
+    
 
     data() {
         return {
-            
+            jobs: []
         };
     },
-
-    mounted() {
-        
-    },
-
-    methods: {
-        
-    },
+    created(){
+        var vm = this;
+        fetchJobsList()
+        .then(function(response){
+          vm.jobs   = response.data;
+        })
+        .catch()
+    }
 };
 </script>
 
