@@ -24,6 +24,18 @@ body{
   padding: 0;
   margin: 0;
 }
+a{
+  text-decoration: none;
+  color: #34495e;
+}
+a.router-link-exact-active{
+  text-decoration: underline;
+}
+a:hover{
+  cursor: pointer;
+  color: #42b884;
+  text-decoration: underline;
+}
 /* Router 트렌지션 */
 .page-enter-active,
 .page-leave-active {
