@@ -9,8 +9,8 @@ import UserView from '../views/UserView.vue'
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
-    mode: 'history',
-    routes: [
+    mode: 'history', // url #값 제거
+    routes: [ //routes도 커졌을때 모듈화 가능
         {
             path: '/',
             redirect: '/news',
