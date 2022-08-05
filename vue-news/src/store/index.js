@@ -13,7 +13,9 @@ export const store = new Vuex.Store({
     state : { // 3. state에 저장한다.
         news : [],
         asks : [],
-        jobs : []
+        jobs : [],
+        user : {},
+        items: [],
     },
     getters:{
         fetchedNews(state) {
@@ -24,7 +26,10 @@ export const store = new Vuex.Store({
         },
         fetchedJobs(state){            
             return state.jobs
-        }       
+        },
+        fetchedItem(state){
+            return state.items
+        }
     },
     mutations, // 2. mutations으로 데이터 받아
     actions // 1. 백엔드 API를 actions으로 받고 

@@ -3,9 +3,10 @@
         <!-- <div v-for="(ask, i) in fetchedAsk" v-bind:key="i"> {{ ask.title}} </div> -->
         <p v-for="(item, i) in fetchedAsk" v-bind:key="i">
             <!-- v-bind:href 축약-->
-            <a :href="item.url">
+            
+            <router-link v-bind:to="`item/${item.id}`">
                 {{ item.title }}
-            </a>
+            </router-link>
             <small>{{ item.time_ago }}, {{ item.user }}</small>
         </p>
     </div>
