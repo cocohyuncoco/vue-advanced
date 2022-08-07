@@ -11,11 +11,12 @@ Vue.use(Vuex);
 // 상태는 여러 컴포넌트 간에 공유되는 데이터 속성
 export const store = new Vuex.Store({
     state : { // 3. state에 저장한다.
-        news : [],
-        asks : [],
-        jobs : [],
+        // news : [],
+        // asks : [],
+        // jobs : [],
         user : {},
-        items: [],
+        items: {},
+        list: [],
     },
     getters:{
         fetchedNews(state) {

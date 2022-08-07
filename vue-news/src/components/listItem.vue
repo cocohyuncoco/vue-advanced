@@ -42,33 +42,19 @@
 <script>
 
 export default {
- 
-    created() {
-        
-        const name = this.$route.name;
-
-        if(name === 'news'){
-            this.$store.dispatch('FETCH_NEWS');
-        }else if(name === 'ask'){
-            this.$store.dispatch('FETCH_ASKS');
-        } else if (name === 'jobs') {
-            this.$store.dispatch('FETCH_JOBS');
-        }
-
-
-    },
     computed: {
         listItems() {
-            const routename = this.$route.name;
+            return this.$store.state.list;
+            // const routename = this.$route.name;
 
-            if (routename === 'news') {
-                return this.$store.state.news;
-            } else if (routename === 'ask') {
-                return this.$store.state.asks;
-            } else if (routename === 'jobs') {
-                return this.$store.state.jobs;
-            } 
-            return this.$store.state.news;
+            // if (routename === 'news') {
+            //     return this.$store.state.news;
+            // } else if (routename === 'ask') {
+            //     return this.$store.state.asks;
+            // } else if (routename === 'jobs') {
+            //     return this.$store.state.jobs;
+            // } 
+            // return this.$store.state.news;
         }
         
     },

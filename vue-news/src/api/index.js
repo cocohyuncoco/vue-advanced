@@ -21,6 +21,10 @@ function fetchAskList() {
     return axios.get(`${config.baseUrl}ask/1.json`)
 }
 
+function fetchList(pageName) {
+    return axios.get(`${config.baseUrl}${pageName}.json`)
+}
+
 function fetchUserInfo(username){
     // https://api.hnpwa.com/v0/user/32340433.json
     return axios.get(`${config.baseUrl}user/${username}.json`)
@@ -32,4 +36,4 @@ function fetchCommentItem(id){
 }
 
 // 3. 마지막 내보내기
-export { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo, fetchCommentItem }
+export { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo, fetchCommentItem, fetchList }

@@ -4,17 +4,45 @@
     <tool-bar></tool-bar>
 
     <transition name="page">
-      <router-view />
+      <router-view/>
     </transition>
+
+    <spinner :loading="lodingStatus"></spinner>
+
   </div>
 </template>
 
 <script>
 import ToolBar from './components/ToolBar.vue';
+import Spinner from './components/Spinner.vue';
+import bus from './utils/bus.js';
 
 export default {
   components:{
     ToolBar,
+    Spinner
+  },
+  data(){
+    return{
+      lodingStatus: false,
+    };
+  },
+  methods: {
+    startSpinner(){
+      this.lodingStatus = true;
+    },
+    endSpinner(){
+      this.lodingStatus = false;
+    }
+  },
+  created(){
+    bus.$on('start:spinner', this.startSpinner)
+    bus.$on('end:spinner', this.endSpinner)
+  },
+  beforeDestroy(){
+    // 이벤트버스는 이벤트객체가 계속 쌓이기전에 off 시켜야함
+    bus.$off('start:spinner', this.startSpinner)
+    bus.$off('end:spinner', this.endSpinner)
   }
 }
 </script>
