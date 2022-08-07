@@ -5,6 +5,8 @@ import AskView from '../views/AskView.vue'
 import JobsView from '../views/JobsView.vue'
 import ItemView from '../views/ItemView.vue'
 import UserView from '../views/UserView.vue'
+import bus from '../utils/bus.js'
+import {store} from '../store/index.js'
 // import createListView from '../views/CreateListView'
 
 Vue.use(VueRouter);
@@ -25,18 +27,55 @@ export const router = new VueRouter({
             // 기존에 있던 컴포넌트 위에 컴포넌트가 하나 더 생김
             // component: createListView('NewsView'),
 
+            // 특정 URL로 접근할때 인증정보가 있는지 없는지 확인할때 가장 흔하게 쓰임
+            beforeEnter:(to, from, next) => { 
+                bus.$emit('start:spinner');
+
+                store.dispatch('FETCH_LIST', to.name)
+                    .then(() => {
+                        // #5.                  
+                        next();
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });                
+            }
         },
         {
             path: '/ask',
             component: AskView,
             name: 'ask',
             // component: createListView('AskView'),
+            beforeEnter: (to, from, next) => {
+                bus.$emit('start:spinner');
+
+                store.dispatch('FETCH_LIST', to.name)
+                    .then(() => {
+                        // #5.                     
+                        next();
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
         },
         {
             path: '/jobs',
             component: JobsView,
             name: 'jobs',
             // component: createListView('JobsView'),
+            beforeEnter: (to, from, next) => {
+                bus.$emit('start:spinner');
+
+                store.dispatch('FETCH_LIST', to.name)
+                    .then(() => {
+                        // #5.                 
+                        next();
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
         },
         {
             path: '/item/:id',
@@ -48,3 +87,4 @@ export const router = new VueRouter({
         },
     ]
 });
+

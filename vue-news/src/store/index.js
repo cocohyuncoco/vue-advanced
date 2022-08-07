@@ -16,7 +16,7 @@ export const store = new Vuex.Store({
         // jobs : [],
         user : {},
         items: {},
-        list: [],
+        list: [], // list 데이터를 3개가 공유하다보니까 오동작남. 페이지 달라도 전 페이지 데이터 보여짐 잠깐
     },
     getters:{
         fetchedNews(state) {

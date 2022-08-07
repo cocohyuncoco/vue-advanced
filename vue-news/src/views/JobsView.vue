@@ -8,6 +8,7 @@
 import ListItem from '../components/listItem.vue';
 import ListMixin from '../mixins/ListMixin.js';
 
+
 export default {   
     components:{
         ListItem
