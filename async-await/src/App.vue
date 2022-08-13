@@ -10,6 +10,7 @@
 
 <script>
 import axios from 'axios'
+import { handleException } from './utils/handler.js'
 
 export default {
   data(){
@@ -28,7 +29,7 @@ export default {
               .then(res =>{
                 this.items = res.data;
               })
-              .catch()
+              .catch(err => console.log(err))
           }
         })
         .catch(err => console.log(err));
@@ -36,12 +37,18 @@ export default {
 
     // 2. async & await 로 바꾸면 
     async loginUser1(){
-      var res = await axios.get('https://jsonplaceholder.typicode.com/users/1');
-        if(res.data.id === 1){
+
+      try {
+        var res = await axios.get('https://jsonplaceholder.typicode.com/users/1');
+        if (res.data.id === 1) {
           console.log('사용자가 인증 되었습니다');
           var list = await axios.get('https://jsonplaceholder.typicode.com/todos');
-          this.items = list.data;          
+          this.items = list.data;
         }
+      } catch (error) {
+        handleException(error); // 공통 에러 함수 만들기 (팁)
+        console.log(error);
+      }     
     }
   }
 }
