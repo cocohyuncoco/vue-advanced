@@ -7,32 +7,63 @@ const config = {
 };
 
 // 2. 공통 API 함수들 정리
-function fetchNewsList(){
+async function fetchNewsList(){
     // return 바로 해준게 핵심
     // return axios.get(config.baseUrl+'/news/1.json');
-    return axios.get(`${config.baseUrl}news/1.json`);
+
+    try {
+        return await axios.get(`${config.baseUrl}news/1.json`);    
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-function fetchJobsList(){
-    return axios.get(`${config.baseUrl}jobs/1.json`)
+async function fetchJobsList(){
+    try {
+        return await waxios.get(`${config.baseUrl}jobs/1.json`)    
+    } catch (error) {
+        console.log(error);       
+    }
 }
 
-function fetchAskList() {
-    return axios.get(`${config.baseUrl}ask/1.json`)
+async function fetchAskList() {
+    try {
+        // 코딩 컨벤션에 따라 골라 사용
+        //1. return await axios.get(`${config.baseUrl}ask/1.json`)            
+         
+        //2. 
+        const res = await axios.get(`${config.baseUrl}ask/1.json`)   
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+    
 }
 
-function fetchList(pageName) {
-    return axios.get(`${config.baseUrl}${pageName}.json`)
+async function fetchList(pageName) {
+    try {
+        return await axios.get(`${config.baseUrl}${pageName}.json`)    
+    } catch (error) {
+        console.log(error);
+    }    
 }
 
-function fetchUserInfo(username){
-    // https://api.hnpwa.com/v0/user/32340433.json
-    return axios.get(`${config.baseUrl}user/${username}.json`)
+async function fetchUserInfo(username){
+    try {
+        // https://api.hnpwa.com/v0/user/32340433.json
+        return await axios.get(`${config.baseUrl}user/${username}.json`)
+    } catch (error) {
+        console.log(error);
+    }      
 }
 
-function fetchCommentItem(id){
-    // https://api.hnpwa.com/v0/item/32340433.json
-    return axios.get(`${config.baseUrl}item/${id}.json`)
+async function fetchCommentItem(id){    
+    try {
+        // https://api.hnpwa.com/v0/item/32340433.json
+        return await axios.get(`${config.baseUrl}item/${id}.json`)
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 // 3. 마지막 내보내기
