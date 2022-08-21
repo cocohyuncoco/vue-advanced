@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <fatch-data url="https://jsonplaceholder.typicode.com/users/1">
+      <!-- reader 함수로 이곳에 값이 노출 -->
+      <div slot-scope="{response, loading}" v-if="!loading">
+        {{ response }}
+        
+        <div v-if="loading">
+          loading...
+        </div>
+      </div>
+    </fatch-data>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FatchData from './components/FetchData.vue'
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    FatchData
+  },  
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" scoped>
+
 </style>

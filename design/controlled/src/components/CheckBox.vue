@@ -8,6 +8,8 @@
 <script>
 export default {
     // props: ['checked'],
+    // @input 이벤트
+    // :value 값
     props: ['value'],
     methods: {
         toggleCheckBox() {
